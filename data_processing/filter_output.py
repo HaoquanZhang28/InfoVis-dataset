@@ -69,7 +69,9 @@ grouped_df = grouped_df.rename(
         "q": "quantity",
     }
 )
-
+# Drop data with zero quantity
 grouped_df = grouped_df[grouped_df["quantity"] != 0]
-
+# Filter out data from 2014 and later years
+grouped_df = grouped_df[grouped_df["year"] < 2014]
 grouped_df.to_csv("top10_trade_final.csv", index=False)
+print("Filtered data saved to top10_trade_final.csv")
